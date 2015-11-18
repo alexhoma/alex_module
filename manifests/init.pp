@@ -23,7 +23,7 @@ class alex_module {
   }
 
   ## PHP
-  $php_version = '56'
+  $php_version = '56';
 
   include ::yum::repo::remi
 

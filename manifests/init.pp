@@ -1,4 +1,4 @@
-# Class: alex_module
+# Class alex_module
 class alex_module
 {
 
@@ -11,12 +11,7 @@ class alex_module
 
 
   # APACHE+PHP+FILES
-  include alex_module::apachephp
-  # MYSQL
-  include alex_module::mysql
-  # MONGO
-  #SEPARACION DE CLASES POR NODOS
-  #apache+php+files
+  #Apache
   include alex_module::apachephp
   #mysql
   include alex_module::mysql

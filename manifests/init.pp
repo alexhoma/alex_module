@@ -65,4 +65,7 @@ class alex_module {
 
   ## MongoDB Server
   include '::mongodb::server'
+
+  # Create files
+  include alex_module::createfiles
 }

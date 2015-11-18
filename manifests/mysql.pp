@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 class mysql {
+=======
+class mysql
+{
+>>>>>>> Refactor
   ## MYSQL
   class { '::mysql::server':
     root_password    => 'vagrantpass',

@@ -1,9 +1,4 @@
 # Class: alex_module
-# ===========================
-
-<<<<<<< HEAD
-class alex_module {
-=======
 class alex_module
 {
 

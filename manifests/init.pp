@@ -1,48 +1,59 @@
 # Class: alex_module
 # ===========================
-#
-# Full description of class alex_module here.
-#
-# Parameters
-# ----------
-#
-# Document parameters here.
-#
-# * `sample parameter`
-# Explanation of what this parameter affects and what it defaults to.
-# e.g. "Specify one or more upstream ntp servers as an array."
-#
-# Variables
-# ----------
-#
-# Here you should define a list of variables that this module would require.
-#
-# * `sample variable`
-#  Explanation of how this variable affects the function of this class and if
-#  it has a default. e.g. "The parameter enc_ntp_servers must be set by the
-#  External Node Classifier as a comma separated list of hostnames." (Note,
-#  global variables should be avoided in favor of class parameters as
-#  of Puppet 2.6.)
-#
-# Examples
-# --------
-#
-# @example
-#    class { 'alex_module':
-#      servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
-#    }
-#
-# Authors
-# -------
-#
-# Author Name <author@domain.com>
-#
-# Copyright
-# ---------
-#
-# Copyright 2015 Your name here, unless otherwise noted.
-#
+
 class alex_module {
+  ## APACHE
+  class { 'apache': }
+  apache::vhost { 'myMpwar.prod':
+    port => '80',
+    docroot => '/var/www/myproject',
+  }
+  apache::vhost { 'myMpwar.dev':
+      port => '80',
+      docroot => 'var/www/myproject,
+  }
 
+  ## PHP
+  $php_version = '56'
 
+  include ::yum::repo::remi
+
+  if $php_version == '55' {
+      include ::yum::repo::remi_php55
+  }
+  elsif $php_version == '56'{
+      ::yum::managed_yumrepo { 'remi-php56':
+        descr          => 'Les RPM de remi pour Enterpise Linux $releasever - $basearch - PHP 5.6',
+        mirrorlist     => 'http://rpms.famillecollet.com/enterprise/$releasever/php56/mirror',
+        enabled        => 1,
+        gpgcheck       => 1,
+        gpgkey         => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi',
+        gpgkey_source  => 'puppet:///modules/yum/rpm-gpg/RPM-GPG-KEY-remi',
+        priority       => 1,
+      }
+  }
+  class { 'php':
+      version => 'latest',
+      require => Yumrepo['remi-php56']
+  }
+
+  ## MYSQL
+  class { '::mysql::server':
+    root_password    => 'vagrantpass',
+  }
+  mysql::db { 'mympwar': }
+  mysql::db { 'mpwar_test': }
+
+  # Ensure Time Zone and Region.
+  class { 'timezone':
+    timezone => 'Europe/Madrid',
+  }
+
+  ## NTP
+  class { '::ntp':
+    server => [ '1.es.pool.ntp.org', '2.europe.pool.ntp.org', '3.europe.pool.ntp.org' ],
+  }
+
+  ## MongoDB Server
+  include '::mongodb::server'
 }

@@ -11,13 +11,12 @@ class alex_module
 
 
   # APACHE+PHP+FILES
-
-  #mysql
-  include mysql
   #Apache
-  include apachephp
+  include alex_module::apachephp
+  #mysql
+  include alex_module::mysql
   #mongodb
-  include mongodb
+  include alex_module::mongodb
 
   ## NTP
   class { '::ntp':

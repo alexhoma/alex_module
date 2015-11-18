@@ -1,4 +1,4 @@
-class mysql
+class alex_module::mysql
 {
   ## MYSQL
   class { '::mysql::server':

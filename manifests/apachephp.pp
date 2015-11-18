@@ -1,5 +1,5 @@
 
-class apachephp
+class alex_module::apachephp
 {
   ## PHP
   include ::yum::repo::remi
@@ -10,6 +10,7 @@ class apachephp
   class{ '::yum::repo::remi_php56':
     require => Package['libzip-last']
   }
+
 
   class { 'php':
     version => 'latest',

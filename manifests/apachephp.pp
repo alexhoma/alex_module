@@ -25,7 +25,7 @@ class apachephp {
   }
   apache::vhost { 'myMpwar.dev':
       port => '80',
-      docroot => 'var/www/myproject,
+      docroot => 'var/www/myproject',
   }
 
   # Create files

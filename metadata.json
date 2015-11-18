@@ -1,0 +1,14 @@
+{
+  "name": "alexhoma-alex_module",
+  "version": "0.1.0",
+  "author": "alexhoma",
+  "summary": "Module for exam MPWAR",
+  "license": "Apache-2.0",
+  "source": "",
+  "project_page": null,
+  "issues_url": "To La Salle jeje",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ]
+}
+

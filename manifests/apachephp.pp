@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 class apachephp {
   ## PHP
   include ::yum::repo::remi

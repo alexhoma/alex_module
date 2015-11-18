@@ -11,10 +11,11 @@ class alex_module
 
 
   # APACHE+PHP+FILES
-  #Apache
-  include apachephp
+
   #mysql
   include mysql
+  #Apache
+  include apachephp
   #mongodb
   include mongodb
 

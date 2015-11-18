@@ -6,7 +6,7 @@ class alex_module {
 =======
 class alex_module
 {
->>>>>>> Refactor
+
   ## Misc.
   $misc_packages = [
     'sendmail','vim-enhanced','telnet','zip','unzip','screen',
@@ -14,20 +14,18 @@ class alex_module
   ]
   package { $misc_packages: ensure => latest }
 
-<<<<<<< HEAD
+
   # APACHE+PHP+FILES
   include alex_module::apachephp
   # MYSQL
   include alex_module::mysql
   # MONGO
-=======
   #SEPARACION DE CLASES POR NODOS
   #apache+php+files
   include alex_module::apachephp
   #mysql
   include alex_module::mysql
   #mongodb
->>>>>>> Refactor
   include alex_module::mongodb
 
   ## NTP
